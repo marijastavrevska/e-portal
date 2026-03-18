@@ -1,0 +1,101 @@
+.e-portal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  padding: 0 16px 0 0; /* No left padding so the waffle icon touches the edge */
+  background-color: #111111;
+  color: #ffffff;
+  font-size: 14px;
+
+  /* --- Layout Sections --- */
+  .header-left, .header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .header-middle {
+    flex-grow: 1;
+    padding-left: 20px;
+    border-left: 1px solid #333333; /* The subtle separator line from the mockup */
+    margin-left: 16px;
+  }
+
+  /* --- Left Section Specifics --- */
+  .waffle-btn {
+    width: 48px;
+    height: var(--header-height);
+    background-color: #8661C5; /* The purple accent color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 16px;
+
+    svg {
+      width: 20px;
+      height: 20px;
+      color: white;
+    }
+
+    &:hover {
+      background-color: #724eab; /* Slightly darker purple on hover */
+    }
+  }
+
+  .brand-name {
+    font-weight: 600;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+  }
+
+  /* --- Middle Section Specifics --- */
+  .breadcrumb {
+    color: #ffffff;
+
+    .caret {
+      margin: 0 4px;
+      color: #888888;
+    }
+  }
+
+  /* --- Right Section Specifics --- */
+  .environment-badge {
+    margin-right: 16px;
+    font-size: 12px;
+    color: #cccccc;
+  }
+
+  /* Common Icon Button Styling */
+  .icon-btn, .avatar-btn {
+    background: transparent;
+    border: none;
+    color: #ffffff;
+    cursor: pointer;
+    height: var(--header-height);
+    padding: 0 12px;
+    font-size: 16px;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #333333; /* Dark gray hover effect */
+    }
+  }
+
+  /* User Avatar Styling */
+  .avatar-btn {
+    padding: 0 12px 0 16px;
+  }
+
+  .avatar-circle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #d8b4e2; /* Light purple for the avatar */
+    color: #111111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 12px;
+  }
+}

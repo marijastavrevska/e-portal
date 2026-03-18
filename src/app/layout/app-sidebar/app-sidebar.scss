@@ -1,0 +1,209 @@
+.sidebar-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: #f3f2f1;
+  color: #323130;
+  font-size: 14px;
+
+  /* Top hamburger and pin buttons */
+  .sidebar-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 16px;
+
+    .icon-btn {
+      background: transparent;
+      border: none;
+      font-size: 16px;
+      color: #605e5c;
+      cursor: pointer;
+      padding: 4px;
+
+      &:hover { color: #323130; }
+    }
+  }
+
+  /* Main Navigation List */
+  .sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+
+    /* Base styling for all main menu buttons/links */
+    .nav-item {
+      display: flex;
+      align-items: center;
+        justify-content: flex-start;
+      width: 100%;
+      padding: 10px 16px;
+      background: transparent;
+      border: none;
+      text-align: left;
+      color: #323130;
+      text-decoration: none;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 14px;
+
+      &:hover {
+        background-color: #edebe9; /* D365 standard light gray hover */
+      }
+
+      &.active {
+        background-color: #e1dfdd; /* Slightly darker when expanded */
+      }
+    }
+
+    .nav-icon {
+      width: 24px;
+      font-size: 16px;
+      margin-right: 8px;
+      color: #605e5c;
+    }
+
+    .nav-label {
+      flex: 1 1 auto; /* Take remaining space so caret goes to far right */
+      margin-left: 4px;
+    }
+
+    .nav-chevron {
+      font-size: 12px;
+      color: #605e5c;
+      margin-left: 8px; /* Small gap from text, sits at far right */
+    }
+
+    /* Sub-menu (Customer, Product, Vendor) styling */
+    .sub-menu {
+      display: flex;
+      flex-direction: column;
+      background-color: #faf9f8; /* Very subtle background shift for sub-items */
+        padding: 8px 0;
+        margin-top: 8px; /* Clearer gap from the "Modules" row */
+        border-top: 1px solid #e1dfdd;
+        border-bottom: 1px solid #e1dfdd;
+
+      .sub-nav-item {
+        //padding: 8px 16px 8px 48px; /* Indented to align perfectly with text above */
+        //color: #323130;
+        //text-decoration: none;
+        //display: block;
+        //
+        //&:hover {
+        //  background-color: #edebe9;
+        //}
+        //
+        ///* The specific styling for the page you are currently on */
+        //&.active {
+        //  font-weight: 600;
+        //  background-color: #edebe9;
+        //  border-left: 3px solid #8661C5; /* The E-Portal purple brand color */
+        //  padding-left: 45px; /* Compensate for the 3px border so text doesn't shift */
+        //}
+
+        padding: 8px 16px 8px 48px;
+        color: #323130;
+        text-decoration: none;
+        display: block;
+
+        /* ADD THESE LINES to fix the button styling */
+        text-align: left;
+        width: 100%;
+        background: transparent;
+        border: none;
+        font-family: inherit;
+        font-size: 14px;
+        cursor: pointer;
+
+        &:hover {
+          background-color: #edebe9;
+        }
+
+        &.active {
+          font-weight: 600;
+          background-color: #edebe9;
+          border-left: 3px solid #8661C5;
+          padding-left: 45px;
+        }
+      }
+    }
+  }
+}
+
+/* --- THE SECONDARY FLYOUT PANE --- */
+.secondary-pane {
+  position: absolute;
+  top: 0;
+  left: var(--sidebar-width); /* Starts exactly where the sidebar ends */
+  width: 300px; /* Width of the flyout */
+  height: 100%;
+  background-color: #ffffff;
+  border-right: 1px solid #e1dfdd;
+  box-shadow: 4px 0 8px rgba(0, 0, 0, 0.05); /* D365 shadow drop */
+  z-index: 90; /* Sits above the main content grid */
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+
+  .pane-header {
+    padding: 16px;
+    border-bottom: 1px solid #e1dfdd;
+
+    .pane-controls {
+      display: flex;
+      gap: 16px;
+
+      .text-btn {
+        background: none;
+        border: none;
+        color: #323130;
+        font-size: 12px;
+        cursor: pointer;
+        padding: 0;
+
+        &:hover { text-decoration: underline; }
+      }
+    }
+  }
+
+  .pane-content {
+    padding: 16px 0;
+
+    .pane-section-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #323130;
+      padding: 0 16px 8px 16px;
+      cursor: pointer;
+
+      .chevron {
+        font-size: 10px;
+        margin-right: 4px;
+        color: #605e5c;
+      }
+    }
+
+    .pane-link-list {
+      display: flex;
+      flex-direction: column;
+
+      .pane-link {
+        color: #005A9E; /* The specific D365 blue from your mockup */
+        text-decoration: none;
+        font-size: 14px;
+        padding: 6px 16px 6px 32px; /* Indented under the title */
+
+        &:hover {
+          background-color: #f3f2f1;
+          text-decoration: underline;
+        }
+
+        &.active {
+          background-color: #edebe9;
+          font-weight: 600;
+        }
+      }
+    }
+  }
+}

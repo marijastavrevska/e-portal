@@ -1,0 +1,118 @@
+<!--<aside class="sidebar-container">-->
+
+<!--  <div class="sidebar-controls">-->
+<!--    <button class="icon-btn" title="Toggle Menu">&#9776;</button>-->
+<!--    <button class="icon-btn pin-btn" title="Pin Menu">&#128392;</button>-->
+<!--  </div>-->
+
+<!--  <nav class="sidebar-nav">-->
+
+<!--    <a href="#" class="nav-item">-->
+<!--      <span class="nav-icon">&#8962;</span> <span class="nav-label">Home</span>-->
+<!--    </a>-->
+
+<!--    <button class="nav-item">-->
+<!--      <span class="nav-icon">&#9734;</span> <span class="nav-label">Favorites</span>-->
+<!--      <span class="nav-chevron">&#709;</span> </button>-->
+
+<!--    <button class="nav-item">-->
+<!--      <span class="nav-icon">&#128336;</span> <span class="nav-label">Recent</span>-->
+<!--      <span class="nav-chevron">&#709;</span>-->
+<!--    </button>-->
+
+<!--    <div class="nav-group">-->
+<!--      <button class="nav-item" (click)="toggleModules()" [class.active]="isModulesExpanded">-->
+<!--        <span class="nav-icon">&#9776;</span> <span class="nav-label">Modules</span>-->
+<!--        <span class="nav-chevron">{{ isModulesExpanded ? '&#708;' : '&#709;' }}</span>-->
+<!--      </button>-->
+
+<!--&lt;!&ndash;      @if (isModulesExpanded) {&ndash;&gt;-->
+<!--&lt;!&ndash;        <div class="sub-menu">&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="#" class="sub-nav-item">Customer</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="#" class="sub-nav-item">Product</a>&ndash;&gt;-->
+<!--&lt;!&ndash;          <a href="#" class="sub-nav-item active">Vendor</a>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+<!--&lt;!&ndash;      }&ndash;&gt;-->
+<!--      @if (isModulesExpanded) {-->
+<!--        <div class="sub-menu">-->
+<!--          <a routerLink="/customer" routerLinkActive="active" class="sub-nav-item">Customer</a>-->
+<!--          <a routerLink="/product" routerLinkActive="active" class="sub-nav-item">Product</a>-->
+<!--          <a routerLink="/vendor" routerLinkActive="active" class="sub-nav-item">Vendor</a>-->
+<!--        </div>-->
+<!--      }-->
+<!--    </div>-->
+
+<!--  </nav>-->
+<!--</aside>-->
+
+<aside class="sidebar-container">
+
+  <div class="sidebar-controls">
+    <button mat-icon-button class="icon-btn">&#9776;</button>
+    <button mat-icon-button class="icon-btn pin-btn">&#128392;</button>
+  </div>
+
+  <nav class="sidebar-nav">
+    <div class="nav-group">
+      <button mat-button class="nav-item" (click)="toggleModules()" [class.active]="isModulesExpanded">
+        <span class="nav-icon">&#9776;</span>
+        <span class="nav-label">Modules</span>
+        <span class="nav-chevron">
+          {{ isModulesExpanded ? '\u005E' : '\u02C5' }}
+        </span>
+      </button>
+
+      @if (isModulesExpanded) {
+        <div class="sub-menu">
+          <a mat-button
+             routerLink="/customer"
+             routerLinkActive="active"
+             class="sub-nav-item"
+             (click)="isSecondaryPaneOpen = false">
+            Customer
+          </a>
+          <a mat-button
+             routerLink="/product"
+             routerLinkActive="active"
+             class="sub-nav-item"
+             (click)="isSecondaryPaneOpen = false">
+            Product
+          </a>
+
+          <button mat-button class="sub-nav-item" (click)="toggleSecondaryPane()" [class.active]="isSecondaryPaneOpen">
+            Vendor
+          </button>
+        </div>
+      }
+    </div>
+  </nav>
+
+  @if (isSecondaryPaneOpen) {
+    <div class="secondary-pane">
+      <div class="pane-header">
+        <div class="pane-controls">
+          <button mat-button class="text-btn">+ Expand all</button>
+          <button mat-button class="text-btn">- Collapse all</button>
+        </div>
+      </div>
+
+      <div class="pane-content">
+        <div class="pane-section-title">
+          <span class="chevron">&#709;</span> Views
+        </div>
+
+        <div class="pane-link-list">
+          @for (view of vendorViews; track view) {
+            <a mat-button
+               [routerLink]="['/vendor', formatUrl(view)]"
+               routerLinkActive="active"
+               class="pane-link">
+              {{ view }}
+            </a>
+          }
+        </div>
+      </div>
+    </div>
+  }
+
+</aside>

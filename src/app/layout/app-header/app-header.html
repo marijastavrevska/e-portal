@@ -1,0 +1,37 @@
+<mat-toolbar class="e-portal-header">
+
+  <div class="header-left">
+    <button mat-button class="icon-btn waffle-btn" aria-label="App Launcher">
+      <svg viewBox="0 0 20 20" fill="currentColor">
+        <path d="M4 4h4v4H4V4zm6 0h4v4h-4V4zm6 0h4v4h-4V4zM4 10h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4zM4 16h4v4H4v-4zm6 0h4v4h-4v-4zm6 0h4v4h-4v-4z"/>
+      </svg>
+    </button>
+    <div class="brand-name">E-PORTAL</div>
+  </div>
+
+  <div class="header-middle">
+    @if (breadcrumbModule || breadcrumbTitle) {
+      <span class="breadcrumb">
+        {{ breadcrumbModule }}
+        @if (breadcrumbModule && breadcrumbTitle) {
+          <span class="caret">&gt;</span>
+        }
+        {{ breadcrumbTitle }}
+      </span>
+    }
+  </div>
+
+  <div class="header-right">
+    <span class="environment-badge">VAMY</span>
+    <button mat-icon-button class="icon-btn" title="Search">&#128269;</button>
+    <button mat-icon-button class="icon-btn" title="Notifications">&#128276;</button>
+    <button mat-icon-button class="icon-btn" title="Feedback">&#9786;</button>
+    <button mat-icon-button class="icon-btn" title="Settings">&#9881;</button>
+    <button mat-icon-button class="icon-btn" title="Help">&#63;</button>
+
+    <button mat-button class="avatar-btn">
+      <div class="avatar-circle">MM</div>
+    </button>
+  </div>
+
+</mat-toolbar>
