@@ -17,6 +17,7 @@ import { LandingPageComponent } from './pages/landing-page/landing-page';
 import { CustomerComponent } from './pages/customer/customer';
 import { ProductComponent } from './pages/product/product';
 import { DynamicViewComponent } from './pages/dynamic-view/dynamic-view';
+import { DashboardComponent } from './pages/dashboard/dashboard';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'vendor', pathMatch: 'full' },
@@ -29,6 +30,11 @@ export const routes: Routes = [
     path: 'vendor/:viewId',
     component: DynamicViewComponent,
     data: { module: 'Vendor' }
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    data: { module: 'Dashboard', title: 'VMI/VCS Operations' }
   },
   {
     path: 'customer',

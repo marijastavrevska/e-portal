@@ -65,6 +65,13 @@
       @if (isModulesExpanded) {
         <div class="sub-menu">
           <a mat-button
+             routerLink="/dashboard"
+             routerLinkActive="active"
+             class="sub-nav-item"
+             (click)="isSecondaryPaneOpen = false">
+            Dashboard
+          </a>
+          <a mat-button
              routerLink="/customer"
              routerLinkActive="active"
              class="sub-nav-item"

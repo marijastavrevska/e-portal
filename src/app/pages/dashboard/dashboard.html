@@ -1,0 +1,114 @@
+<section class="dashboard">
+  <header class="dashboard-header">
+    <div class="title-block">
+      <h2>VMI / VCS Operations Overview</h2>
+      <p>
+        High-level cockpit for internal users to monitor VMI/VCS stock health,
+        replenishment activity, proposals and vendor collaboration – based on
+        the consolidated e-Portal and D365 data.
+      </p>
+    </div>
+
+    <div class="header-actions">
+      <button mat-stroked-button color="primary">
+        <mat-icon>open_in_new</mat-icon>
+        Open Power BI dashboards
+      </button>
+    </div>
+  </header>
+
+  <section class="kpi-grid">
+    <mat-card
+      class="kpi-card"
+      *ngFor="let kpi of kpis"
+    >
+      <div class="kpi-label">
+        {{ kpi.label }}
+      </div>
+      <div class="kpi-value-row">
+        <div class="kpi-value">
+          {{ kpi.value }}
+        </div>
+        <div
+          class="kpi-trend"
+          [class.up]="kpi.trend === 'up'"
+          [class.down]="kpi.trend === 'down'"
+          [class.flat]="kpi.trend === 'flat'"
+        >
+          <mat-icon *ngIf="kpi.trend === 'up'">trending_up</mat-icon>
+          <mat-icon *ngIf="kpi.trend === 'down'">trending_down</mat-icon>
+          <mat-icon *ngIf="kpi.trend === 'flat'">trending_flat</mat-icon>
+        </div>
+      </div>
+      <div class="kpi-helper">
+        {{ kpi.helper }}
+      </div>
+    </mat-card>
+  </section>
+
+  <section class="content-grid">
+    <mat-card class="panel panel-timeline">
+      <header class="panel-header">
+        <div class="panel-title-block">
+          <div class="panel-title">Recent activity</div>
+          <div class="panel-subtitle">
+            Latest events across replenishment, proposals and vendor updates
+          </div>
+        </div>
+      </header>
+
+      <ul class="timeline">
+        <li
+          class="timeline-item"
+          *ngFor="let event of events"
+        >
+          <div
+            class="status-dot"
+            [class.status-open]="event.status === 'open'"
+            [class.status-wip]="event.status === 'wip'"
+            [class.status-done]="event.status === 'done'"
+          ></div>
+          <div class="timeline-content">
+            <div class="timeline-title">
+              {{ event.title }}
+            </div>
+            <div class="timeline-subtitle">
+              {{ event.subtitle }}
+            </div>
+          </div>
+          <div class="timeline-when">
+            {{ event.when }}
+          </div>
+        </li>
+      </ul>
+    </mat-card>
+
+    <mat-card class="panel panel-shortcuts">
+      <header class="panel-header">
+        <div class="panel-title-block">
+          <div class="panel-title">Quick navigation</div>
+          <div class="panel-subtitle">
+            Jump to core VMI/VCS operational views
+          </div>
+        </div>
+      </header>
+
+      <div class="shortcut-grid">
+        <button
+          mat-stroked-button
+          class="shortcut"
+          *ngFor="let s of shortcuts"
+        >
+          <mat-icon class="shortcut-icon">{{ s.icon }}</mat-icon>
+          <div class="shortcut-text">
+            <div class="shortcut-label">{{ s.label }}</div>
+            <div class="shortcut-description">
+              {{ s.description }}
+            </div>
+          </div>
+        </button>
+      </div>
+    </mat-card>
+  </section>
+</section>
+
